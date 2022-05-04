@@ -151,6 +151,8 @@ class P24ASolver:
         logy:boolean - if True, display variables on a logarithmic axis
         """
         axes = kwargs.get('axes')
+        x_axis = kwargs.get("x_axis")
+        y_axis = kwargs.get("y_axis") 
         if axes == None:
             _, axes = plt.subplots(figsize=kwargs.get('figsize'))
         else:
@@ -165,7 +167,8 @@ class P24ASolver:
 
         for n in self._names_to_indices(what_to_plot):
             axes.plot(tvals, Y[n, :], label=self.variable_names[n][1])
-        axes.set_xlabel(r"$t$")
+        axes.set_xlabel(x_axis)
+        axes.set_ylabel(y_axis)
         axes.legend()
         if 'title' in kwargs:
             axes.set_title(kwargs['title'])
